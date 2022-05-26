@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_draftFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_draft"
+        android:title="@string/Drafts"/>
+    <item
+        android:id="@+id/nav_claimFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_add"
+        android:title="@string/Claims"/>
+    <item
+        android:id="@+id/nav_reportFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_list"
+        android:title="@string/Reports"/>
+</menu>

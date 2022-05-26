@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/nav_reportFragment">
+
+    <fragment
+        android:id="@+id/nav_reportFragment"
+        android:name="ru.roadreport.android.ui.report.ReportFragment"
+        android:label="ReportFragment"
+        tools:layout="@layout/fragment_report"/>
+    <fragment
+        android:id="@+id/nav_claimFragment"
+        android:name="ru.roadreport.android.ui.claim.ClaimFragment"
+        android:label="fragment_claim"
+        tools:layout="@layout/fragment_claim" />
+    <fragment
+        android:id="@+id/nav_draftFragment"
+        android:name="ru.roadreport.android.ui.draft.DraftFragment"
+        android:label="fragment_draft"
+        tools:layout="@layout/fragment_draft" />
+</navigation>

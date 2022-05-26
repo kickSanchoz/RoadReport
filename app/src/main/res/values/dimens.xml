@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="s48">48sp</dimen>
+    <dimen name="s36">36sp</dimen>
+    <dimen name="s32">32sp</dimen>
+    <dimen name="s24">24sp</dimen>
+    <dimen name="s18">18sp</dimen>
+    <dimen name="s16">16sp</dimen>
+    <dimen name="s14">14sp</dimen>
+    <dimen name="s12">12sp</dimen>
+    <dimen name="s8">8sp</dimen>
+
+    <dimen name="elevation8dp">8dp</dimen>
+    <dimen name="elevation4dp">4dp</dimen>
+
+    <dimen name="shapeRadius">4dp</dimen>
+</resources>

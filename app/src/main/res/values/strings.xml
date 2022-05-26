@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RoadReport</string>
+    <string name="Drafts">Черновики</string>
+    <string name="Claims">Заявки</string>
+    <string name="Reports">Отчеты</string>
+
+    <string name="YourDrafts">Ваши черновики</string>
+    <string name="DraftName">Название черновика</string>
+</resources>

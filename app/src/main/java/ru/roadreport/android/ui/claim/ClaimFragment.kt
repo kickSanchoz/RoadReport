@@ -1,30 +1,16 @@
 package ru.roadreport.android.ui.claim
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import ru.one2work.android.customer.base.BaseFragment
 import ru.roadreport.android.R
+import ru.roadreport.android.databinding.FragmentClaimBinding
 
-class ClaimFragment : Fragment() {
+class ClaimFragment : BaseFragment<FragmentClaimBinding>() {
+    val viewModel: ClaimViewModel by viewModels()
 
-    companion object {
-        fun newInstance() = ClaimFragment()
+    override fun setLayoutID(): Int = R.layout.fragment_claim
+
+    override fun setupViews() {
+        setupAppBar(binding.appBar, getString(R.string.YourClaims))
     }
-
-    private lateinit var viewModel: ClaimViewModel
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_claim, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ClaimViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }

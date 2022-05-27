@@ -5,5 +5,7 @@
     <string name="Reports">Отчеты</string>
 
     <string name="YourDrafts">Ваши черновики</string>
+    <string name="YourClaims">Ваши заявки</string>
+    <string name="ReadyReports">Готовые отчеты</string>
     <string name="DraftName">Название черновика</string>
 </resources>

@@ -1,32 +1,40 @@
 package ru.roadreport.android.ui.draft
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import ru.one2work.android.customer.base.BaseFragment
 import ru.roadreport.android.R
+import ru.roadreport.android.databinding.FragmentDraftBinding
 
-class DraftFragment : Fragment() {
+interface IFragmentManager {
+    val localFragmentManager: FragmentManager
+}
 
-    companion object {
-        fun newInstance() = DraftFragment()
+class DraftFragment : BaseFragment<FragmentDraftBinding>(), IFragmentManager {
+    private val viewModel: DraftViewModel by viewModels()
+
+    private val draftAdapter by lazy {
+        DraftAdapter(this)
     }
 
-    private lateinit var viewModel: DraftViewModel
+    override fun setLayoutID(): Int = R.layout.fragment_draft
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_draft, container, false)
+    override fun setupViews() {
+        setupAppBar(binding.appBar, getString(R.string.YourDrafts))
+
+        localFragmentManager = childFragmentManager
+
+        binding.rvDrafts.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvDrafts.adapter = draftAdapter
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DraftViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun observeData() {
+        viewModel.draftList.observe(viewLifecycleOwner){
+            draftAdapter.addAll(it)
+        }
     }
 
+    override lateinit var localFragmentManager: FragmentManager
 }

@@ -56,7 +56,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
         mViewBinding = null
     }
 
-    protected fun setupAppBarSearch(appBar: AppBarSmallBinding,
+    protected fun setupAppBar(appBar: AppBarSmallBinding,
                                     label: String,
                                     @DrawableRes btnSrc: Int? = null) {
         appBar.tvTitle.text = label

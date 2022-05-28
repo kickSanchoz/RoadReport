@@ -52,7 +52,7 @@
             android:id="@+id/btnAction"
             style="@style/Button.Image"
             android:layout_marginEnd="4dp"
-            android:visibility="@{isVisible ? View.VISIBLE : View.INVISIBLE}"
+            android:visibility="@{btnImgSrc == null ? View.INVISIBLE : View.VISIBLE}"
             app:icon="@{btnImgSrc ?? @drawable/ic_draft}"
             app:iconTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -2,16 +2,19 @@ package ru.roadreport.android.ui.draft
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
-import ru.roadreport.android.data.domain.DraftModel
+import ru.roadreport.android.data.domain.models.DraftModel
 import ru.roadreport.android.databinding.ItemDraftBinding
-import ru.roadreport.android.ui.draft.dialogs.DraftBottomSheet
+import ru.roadreport.android.ui.draft.dialogs.IDraftBottomSheet
 
-class DraftAdapter(val fragmentManager: IFragmentManager) : RecyclerView.Adapter<DraftAdapter.DraftViewHolder>() {
+class DraftAdapter(private val fragmentManager: FragmentManager)
+    : RecyclerView.Adapter<DraftAdapter.DraftViewHolder>() {
+
     private val draftsList = mutableListOf<DraftModel>()
 
-    private val bottomSheet by lazy {
-        DraftBottomSheet.create()
+    private val draftBottomSheet by lazy {
+        IDraftBottomSheet.create()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DraftViewHolder {
@@ -38,6 +41,7 @@ class DraftAdapter(val fragmentManager: IFragmentManager) : RecyclerView.Adapter
     fun addAll(drafts: List<DraftModel>) {
         clear()
         draftsList.addAll(drafts)
+        notifyDataSetChanged()
     }
 
     inner class DraftViewHolder(val binding: ItemDraftBinding):
@@ -49,8 +53,8 @@ class DraftAdapter(val fragmentManager: IFragmentManager) : RecyclerView.Adapter
             binding.tvDatetime.text = draft.claim.datetime
 
             binding.root.setOnClickListener {
-                if (!bottomSheet.dialogVisible) {
-                    bottomSheet.show(1, fragmentManager.localFragmentManager, null)
+                if (!draftBottomSheet.dialogVisible) {
+                    draftBottomSheet.show(draft, fragmentManager, null)
                 }
             }
         }

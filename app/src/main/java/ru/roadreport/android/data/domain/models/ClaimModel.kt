@@ -1,4 +1,4 @@
-package ru.roadreport.android.data.domain
+package ru.roadreport.android.data.domain.models
 
 import ru.roadreport.android.utils.CLAIM_LOCAL_STATUS
 

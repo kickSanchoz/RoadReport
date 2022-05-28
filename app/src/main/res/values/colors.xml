@@ -34,6 +34,7 @@
     <color name="grey3">#E2E2E2</color>
 
     <color name="red1">#FF0000</color>
+    <color name="red2">#AA0202</color>
 
     <color name="grey_background">#F9FAFB</color>
 </resources>

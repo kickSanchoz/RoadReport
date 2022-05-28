@@ -8,4 +8,10 @@
     <string name="YourClaims">Ваши заявки</string>
     <string name="ReadyReports">Готовые отчеты</string>
     <string name="DraftName">Название черновика</string>
+
+    <string name="Latitude">Широта</string>
+    <string name="Longitude">Долгота</string>
+
+    <string name="Delete">Удалить</string>
+    <string name="Send">Отправить</string>
 </resources>

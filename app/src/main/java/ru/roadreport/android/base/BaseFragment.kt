@@ -53,8 +53,11 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        actionOnDestroyView()
         mViewBinding = null
     }
+
+    open fun actionOnDestroyView() {}
 
     protected fun setupAppBar(appBar: AppBarSmallBinding,
                                     label: String,

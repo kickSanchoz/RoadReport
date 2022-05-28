@@ -37,13 +37,14 @@
                 android:layout_width="128dp"
                 android:layout_height="80dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/ic_photo_placeholder"
+                android:src="@{btnImgSrc ?? @drawable/ic_photo_placeholder}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintHorizontal_weight="4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth="match_constraint"
+                app:shapeAppearance="@style/DefaultShapeAppearance"
                 tools:src="@drawable/ic_photo_placeholder" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -96,7 +97,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_chainStyle="spread_inside"
-                        tools:text="Долгота" />
+                        tools:text="Широта" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_longitude"
@@ -108,7 +109,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_latitude"
-                        tools:text="Широта" />
+                        tools:text="Долгота" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

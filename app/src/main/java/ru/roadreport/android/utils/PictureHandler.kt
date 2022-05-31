@@ -19,6 +19,7 @@ import java.util.*
 
 interface ISelectPicture {
     fun showPicker(block: (File?) -> Unit)
+    fun deletePicture(file: File)
 }
 
 class PictureHandler (
@@ -39,7 +40,7 @@ class PictureHandler (
     }
 
     private fun deleteFile(file: File) {
-        File(file.absolutePath).also { f ->
+        file.let { f ->
             if (f.exists()) {
                 f.delete()
                 Log.e("File status", "deleted")
@@ -72,9 +73,6 @@ class PictureHandler (
 
     //--------------------------------From Device--------------------------------
     private var selectUri: Uri? = null
-    private var newUri: Uri? = null
-    private var newFile: File? = null
-    private var newPath: String? = null
     private val selectPictureLauncher =
         fragment?.registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             Log.e("selectUri", "$uri")
@@ -85,16 +83,6 @@ class PictureHandler (
             else {
                 fragment?.context?.let {
                     createImageFile().also { file ->
-//                        val inputStream = it.contentResolver.openInputStream(uri)
-//                        if (inputStream == null){
-//                            deleteFile(file)
-//                            callback(null)
-//                        }
-//                        else {
-//                            copyFile(inputStream, file)
-//                            callback(file)
-//                        }
-
                         val success = copyFile(uri, file)
                         if (!success){
                             deleteFile(file)
@@ -153,8 +141,6 @@ class PictureHandler (
                 cameraLauncher?.launch(imageUri)
             }
         }
-
-
     }
 
     //--------------------------------Choose--------------------------------
@@ -186,9 +172,10 @@ class PictureHandler (
                 alertDialog?.show()
             }
         }
+    }
 
-//        getFromDevice()
-//        getFromCamera()
+    override fun deletePicture(file: File) {
+        deleteFile(file)
     }
 
     override fun onDestroy(owner: LifecycleOwner) {

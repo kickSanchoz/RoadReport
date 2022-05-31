@@ -38,5 +38,12 @@
     <color name="red1">#FF0000</color>
     <color name="red2">#AA0202</color>
 
+    <color name="yellow1">#FFFF00</color>
+
+    <color name="green1">#00FF00</color>
+    <color name="green2">#289A00</color>
+
+    <color name="orange1">#FD724B</color>
+
     <color name="grey_background">#F9FAFB</color>
 </resources>

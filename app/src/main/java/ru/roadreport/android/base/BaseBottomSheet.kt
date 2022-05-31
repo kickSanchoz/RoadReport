@@ -25,9 +25,12 @@ abstract class BaseBottomSheet<VB: ViewDataBinding> : BottomSheetDialogFragment(
 
     open fun parseArgument() {}
 
+    open fun setupActivityResults() {}
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         parseArgument()
+        setupActivityResults()
     }
 
     override fun onCreateView(

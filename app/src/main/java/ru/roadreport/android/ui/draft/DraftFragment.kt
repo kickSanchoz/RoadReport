@@ -7,6 +7,7 @@ import ru.roadreport.android.R
 import ru.roadreport.android.base.BaseFragment
 import ru.roadreport.android.data.domain.models.ClaimModel
 import ru.roadreport.android.data.domain.models.DraftModel
+import ru.roadreport.android.data.domain.models.GeoLocation
 import ru.roadreport.android.databinding.FragmentDraftBinding
 
 @AndroidEntryPoint
@@ -27,8 +28,11 @@ class DraftFragment : BaseFragment<FragmentDraftBinding>(){
                 0,
                 "Созданный черновик",
                 ClaimModel(
-                    latitude = 99.999999,
-                    longitude = 00.000000,
+                    url = "/storage/emulated/0/Android/data/ru.roadreport/files/Pictures/rr_30052022_2016261275501681018714003.jpg",
+                    geoLocation = GeoLocation(
+                        latitude = -99.999999,
+                        longitude = -00.000000,
+                    ),
                     datetime = System.currentTimeMillis().toString()
                 )
             )

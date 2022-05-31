@@ -11,8 +11,9 @@ data class DraftModel(
 fun DraftModel.toRoom(): DraftModelRoom {
     return DraftModelRoom(
         title = title,
-        latitude = claim.latitude,
-        longitude = claim.longitude,
+        url = claim.url,
+        latitude = claim.geoLocation.latitude,
+        longitude = claim.geoLocation.longitude,
         datetime = System.currentTimeMillis()
     )
 }

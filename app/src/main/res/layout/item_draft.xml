@@ -5,9 +5,6 @@
 
     <data>
 
-        <variable
-            name="btnImgSrc"
-            type="android.graphics.drawable.Drawable" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -37,8 +34,7 @@
                 android:layout_width="128dp"
                 android:layout_height="80dp"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:src="@{btnImgSrc ?? @drawable/ic_photo_placeholder}"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintHorizontal_weight="4"

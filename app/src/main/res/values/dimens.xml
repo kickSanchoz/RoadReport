@@ -13,5 +13,5 @@
     <dimen name="elevation8dp">8dp</dimen>
     <dimen name="elevation4dp">4dp</dimen>
 
-    <dimen name="shapeRadius">4dp</dimen>
+    <dimen name="shapeRadius">10dp</dimen>
 </resources>

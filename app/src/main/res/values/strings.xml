@@ -14,4 +14,9 @@
 
     <string name="Delete">Удалить</string>
     <string name="Send">Отправить</string>
+
+    <string name="CreateClaim">Добавьте жалобу</string>
+    <string name="TakePhoto">Сделать фото</string>
+    <string name="SelectFromGallery">Выбрать из галереи</string>
+    <string name="AttachPhoto">Прикрепте фото<font color="#FF0000">*</font> </string>
 </resources>

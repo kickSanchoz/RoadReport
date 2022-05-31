@@ -4,6 +4,11 @@
 
     <data>
 
+        <import type="ru.roadreport.android.utils.ConstantsKt" />
+
+        <variable
+            name="maxLength"
+            type="ru.roadreport.android.utils.ConstantsKt" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,31 +18,57 @@
         <include
             android:id="@+id/appBar"
             layout="@layout/app_bar_small"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:fillViewport="true"
-            app:layout_constraintTop_toBottomOf="@id/appBar"
+            android:overScrollMode="never"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/appBar">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <include
+                    android:id="@+id/l_createClaim"
+                    layout="@layout/item_card_append"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:placeholder="@{@string/AttachPhoto}" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/tmpImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="12dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_photo_placeholder"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/l_createClaim"
+                    app:shapeAppearance="@style/DefaultShapeAppearance" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_claims"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
                     android:overScrollMode="never"
-                    android:paddingTop="12dp"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/l_createClaim" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

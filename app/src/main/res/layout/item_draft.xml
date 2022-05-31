@@ -37,6 +37,7 @@
                 android:layout_width="128dp"
                 android:layout_height="80dp"
                 android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
                 android:src="@{btnImgSrc ?? @drawable/ic_photo_placeholder}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"

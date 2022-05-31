@@ -1,4 +1,4 @@
-package ru.one2work.android.customer.base
+package ru.roadreport.android.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,11 +20,16 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
     private var mViewBinding: VB? = null
     val binding get() = mViewBinding!!
 
-    abstract fun setLayoutID(): Int
+    abstract fun setLayoutId(): Int
+
+    open fun parseArguments() {}
+
+    open fun setupActivityResults() {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         parseArguments()
+        setupActivityResults()
     }
 
     override fun onCreateView(
@@ -32,7 +37,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        mViewBinding = DataBindingUtil.inflate(inflater, setLayoutID(), container, false)
+        mViewBinding = DataBindingUtil.inflate(inflater, setLayoutId(), container, false)
         return binding.root
     }
 
@@ -48,8 +53,6 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
     open fun observeViews() {}
 
     open fun observeData() {}
-
-    open fun parseArguments() {}
 
     override fun onDestroyView() {
         super.onDestroyView()

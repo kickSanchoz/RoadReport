@@ -1,4 +1,4 @@
-package ru.one2work.android.customer.base
+package ru.roadreport.android.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -3,8 +3,8 @@ package ru.roadreport.android.ui
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
-import ru.one2work.android.customer.base.BaseActivity
 import ru.roadreport.android.R
+import ru.roadreport.android.base.BaseActivity
 import ru.roadreport.android.databinding.ActivityMainBinding
 
 @AndroidEntryPoint

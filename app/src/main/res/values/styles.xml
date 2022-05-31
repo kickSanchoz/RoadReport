@@ -16,6 +16,7 @@
         <item name="android:fontFamily">@font/open_sans</item>
         <item name="fontFamily">@font/open_sans</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/s14</item>
     </style>
 
     <style name="TextAppearance.S48">
@@ -179,12 +180,37 @@
     </style>
 
     <style name="DialogAnimation">
-        <item name="android:windowEnterAnimation">
-            @anim/enter_slide_up
-        </item>
-        <item name="android:windowExitAnimation">
-            @anim/exit_slide_down
-        </item>
+        <item name="android:windowEnterAnimation">@anim/enter_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/exit_slide_down</item>
+    </style>
+
+    <!-- TextView -->
+    <style name="TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance</item>
+    </style>
+
+    <style name="TextView.Borders">
+        <item name="android:background">@drawable/bg_edittext</item>
+        <item name="android:paddingStart">32dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <!-- TextInputLayout -->
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/grey5</item>
+        <item name="boxStrokeColor">@color/grey5</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="hintEnabled">false</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="passwordToggleTint">@color/black</item>
+        <item name="endIconTint">@color/black</item>
+        <item name="helperTextTextAppearance">@style/TextAppearance.S12</item>
     </style>
 
 </resources>

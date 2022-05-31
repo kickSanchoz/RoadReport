@@ -3,8 +3,8 @@ package ru.roadreport.android.ui.draft
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import ru.one2work.android.customer.base.BaseFragment
 import ru.roadreport.android.R
+import ru.roadreport.android.base.BaseFragment
 import ru.roadreport.android.data.domain.models.ClaimModel
 import ru.roadreport.android.data.domain.models.DraftModel
 import ru.roadreport.android.databinding.FragmentDraftBinding
@@ -17,7 +17,7 @@ class DraftFragment : BaseFragment<FragmentDraftBinding>(){
         DraftAdapter(childFragmentManager)
     }
 
-    override fun setLayoutID(): Int = R.layout.fragment_draft
+    override fun setLayoutId(): Int = R.layout.fragment_draft
 
     override fun setupViews() {
         setupAppBar(binding.appBar, getString(R.string.YourDrafts), R.drawable.ic_add)

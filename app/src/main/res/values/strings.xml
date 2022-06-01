@@ -20,9 +20,13 @@
     <string name="SelectFromGallery">Выбрать из галереи</string>
     <string name="AttachPhoto">Прикрепте фото</string>
     <string name="AttachPhotoRequired">Прикрепте фото<font color="#FF0000">*</font></string>
-    <string name="LocationRequiredDescription">Для загрузки фотографии необходимо предоставить доступ к местоположению</string>
+    <string name="LocationPermissionRequiredDescription">Для загрузки фотографии необходимо предоставить доступ к местоположению</string>
     <string name="Provide">Предоставить</string>
     <string name="Cancel">Отмена</string>
+    <string name="Back">Назад</string>
+    <string name="Ok">Ок</string>
+    <string name="LocationServiceRequiredDescription">Для корректной работы необходимо включить службу геолокации</string>
+    <string name="LocationServiceNotReady">Служба геолокации в данный момент недоступна</string>
 
     <string name="StatusDraft">Черновик</string>
     <string name="StatusWaiting">На рассмотрении</string>

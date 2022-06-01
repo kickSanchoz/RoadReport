@@ -49,6 +49,7 @@ class ClaimBottomSheet : BaseBottomSheet<BottomSheetClaimBinding>(), IClaimBotto
         locationHandler.locationListener {
             if (it == null){
                 //Перехватить пустую геолокацию, если этого не было сделано в классе
+                Log.e("GeoLocation", "empty")
             }
             else {
                 viewModel.geoLocation = it

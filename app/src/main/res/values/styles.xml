@@ -137,6 +137,10 @@
         <item name="android:textSize">@dimen/s8</item>
     </style>
 
+    <style name="TextAppearanceError" parent="TextAppearance.S12">
+        <item name="android:textColor">@color/red1</item>
+    </style>
+
     <!--  Кнопки   -->
 
     <style name="Button.Main" parent="Widget.MaterialComponents.Button">
@@ -193,7 +197,7 @@
 
     <style name="TextView.Borders">
         <item name="android:background">@drawable/bg_edittext</item>
-        <item name="android:paddingStart">32dp</item>
+        <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
         <item name="android:paddingTop">4dp</item>
         <item name="android:paddingBottom">4dp</item>
@@ -211,6 +215,8 @@
         <item name="passwordToggleTint">@color/black</item>
         <item name="endIconTint">@color/black</item>
         <item name="helperTextTextAppearance">@style/TextAppearance.S12</item>
+        <item name="errorTextAppearance">@style/TextAppearanceError</item>
+        <item name="errorTextColor">@color/red1</item>
     </style>
 
 </resources>

@@ -23,6 +23,11 @@ abstract class BaseBottomSheet<VB: ViewDataBinding> : BottomSheetDialogFragment(
         return setTheme()
     }
 
+    open fun setLayoutHeight(): Int {
+        return (binding.root.resources.displayMetrics.heightPixels * 0.5).toInt()
+    }
+
+
     open fun parseArgument() {}
 
     open fun setupActivityResults() {}
@@ -56,8 +61,7 @@ abstract class BaseBottomSheet<VB: ViewDataBinding> : BottomSheetDialogFragment(
             val bottomSheet = findViewById<View>(
                 com.google.android.material.R.id.design_bottom_sheet
             ).apply {
-                layoutParams.height =
-                    (binding.root.resources.displayMetrics.heightPixels * 0.5).toInt()
+                layoutParams.height = setLayoutHeight()
             }
 
             val behavior = BottomSheetBehavior.from(bottomSheet).apply {

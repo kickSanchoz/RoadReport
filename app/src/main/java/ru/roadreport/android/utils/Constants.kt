@@ -2,7 +2,7 @@ package ru.roadreport.android.utils
 
 const val MIN_LENGTH_PASSWORD = 8
 const val MAX_LENGTH_PASSWORD = 32
-const val MAX_LENGTH_ACCOMPANYING_TEXT = 300
+const val MAX_LENGTH_ACCOMPANYING_TEXT = 100
 
 const val DATASTORE_NAME = "road-report"
 

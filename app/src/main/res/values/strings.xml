@@ -14,12 +14,14 @@
 
     <string name="Delete">Удалить</string>
     <string name="Send">Отправить</string>
+    <string name="Create">Создать</string>
 
     <string name="CreateClaim">Добавьте жалобу</string>
     <string name="TakePhoto">Сделать фото</string>
     <string name="SelectFromGallery">Выбрать из галереи</string>
     <string name="AttachPhoto">Прикрепте фото</string>
     <string name="AttachPhotoRequired">Прикрепте фото<font color="#FF0000">*</font></string>
+    <string name="AddTitleRequired">Добавьте название<font color="#FF0000">*</font></string>
     <string name="LocationPermissionRequiredDescription">Для загрузки фотографии необходимо предоставить доступ к местоположению</string>
     <string name="Provide">Предоставить</string>
     <string name="Cancel">Отмена</string>
@@ -27,6 +29,9 @@
     <string name="Ok">Ок</string>
     <string name="LocationServiceRequiredDescription">Для корректной работы необходимо включить службу геолокации</string>
     <string name="LocationServiceNotReady">Служба геолокации в данный момент недоступна</string>
+    <string name="HintError">Текст ошибки</string>
+    <string name="TitleDraftRequired">Необходимо указать название черновика</string>
+    <string name="PhotoRequired">Необходимо прекрепить фотографию</string>
 
     <string name="StatusDraft">Черновик</string>
     <string name="StatusWaiting">На рассмотрении</string>

@@ -4,15 +4,13 @@ import androidx.fragment.app.viewModels
 import ru.roadreport.android.R
 import ru.roadreport.android.base.BaseFragment
 import ru.roadreport.android.databinding.FragmentClaimBinding
-import ru.roadreport.android.ui.claim.dialogs.IClaimBottomSheet
+import ru.roadreport.android.ui.claim.dialogs.ClaimBottomSheet
 
 
 class ClaimFragment : BaseFragment<FragmentClaimBinding>() {
     private val viewModel: ClaimViewModel by viewModels()
 
-    private val claimBottomSheet by lazy {
-        IClaimBottomSheet.create()
-    }
+    private var claimBottomSheet: ClaimBottomSheet? = null
 
     override fun setLayoutId(): Int = R.layout.fragment_claim
 
@@ -22,8 +20,9 @@ class ClaimFragment : BaseFragment<FragmentClaimBinding>() {
 
     override fun observeViews() {
         binding.lCreateClaim.cwCardAppend.setOnClickListener {
-            if (!claimBottomSheet.dialogVisible){
-                claimBottomSheet.show(childFragmentManager, null)
+            if (claimBottomSheet?.isVisible != true) {
+                claimBottomSheet = ClaimBottomSheet()
+                claimBottomSheet?.show(childFragmentManager, null)
             }
         }
     }

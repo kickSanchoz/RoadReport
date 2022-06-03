@@ -8,6 +8,7 @@ plugins {
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-kapt'
+apply plugin: "kotlin-parcelize"
 
 android {
     compileSdk 32

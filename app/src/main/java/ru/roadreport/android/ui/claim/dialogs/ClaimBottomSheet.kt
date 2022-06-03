@@ -5,7 +5,6 @@ import android.widget.LinearLayout
 import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import ru.roadreport.android.R
@@ -17,23 +16,14 @@ import ru.roadreport.android.utils.ISelectPicture
 import ru.roadreport.android.utils.LocationHandler
 import ru.roadreport.android.utils.PictureHandler
 
-interface IClaimBottomSheet {
-    fun show(manager: FragmentManager, tag: String?)
-    val dialogVisible: Boolean
-
-    companion object {
-        fun create(): IClaimBottomSheet = ClaimBottomSheet()
-    }
-}
-
 @AndroidEntryPoint
-class ClaimBottomSheet : BaseBottomSheet<BottomSheetClaimBinding>(), IClaimBottomSheet {
+class ClaimBottomSheet : BaseBottomSheet<BottomSheetClaimBinding>() {
     private val viewModel: ClaimBottomSheetViewModel by viewModels()
 
     private lateinit var pictureSelector: ISelectPicture
     private lateinit var locationHandler: ILocation
 
-    override fun setLayoutId(): Int = R.layout.bottom_sheet_claim
+    override fun getLayoutId(): Int = R.layout.bottom_sheet_claim
 
     override fun setLayoutHeight(): Int = LinearLayout.LayoutParams.MATCH_PARENT
 
@@ -68,7 +58,7 @@ class ClaimBottomSheet : BaseBottomSheet<BottomSheetClaimBinding>(), IClaimBotto
         binding.clTitleContent.isVisible = true
 
         binding.btnCreate.setOnClickListener {
-            viewModel.onEvent(DraftFormEvent.Create)
+            viewModel.onEvent(DraftFormEvent.Submit)
         }
     }
 
@@ -143,10 +133,4 @@ class ClaimBottomSheet : BaseBottomSheet<BottomSheetClaimBinding>(), IClaimBotto
             }
         }
     }
-
-    override fun show(manager: FragmentManager, tag: String?) {
-        super.show(manager, tag)
-    }
-
-    override val dialogVisible: Boolean = super.isVisible()
 }

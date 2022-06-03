@@ -8,5 +8,5 @@ sealed class DraftFormEvent {
     data class GeolocationChanged(val geolocation: GeoLocation?): DraftFormEvent()
     data class TitleChanged(val title: String?): DraftFormEvent()
 
-    object Create: DraftFormEvent()
+    object Submit: DraftFormEvent()
 }

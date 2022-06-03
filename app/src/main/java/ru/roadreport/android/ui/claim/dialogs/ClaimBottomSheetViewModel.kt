@@ -39,7 +39,7 @@ class ClaimBottomSheetViewModel @Inject constructor(
             is DraftFormEvent.TitleChanged -> {
                 titleData.value = validateTitle.execute(event.title)
             }
-            is DraftFormEvent.Create -> {
+            is DraftFormEvent.Submit -> {
                 submitData()
             }
         }

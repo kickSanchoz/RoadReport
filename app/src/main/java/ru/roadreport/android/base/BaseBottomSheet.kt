@@ -15,18 +15,13 @@ abstract class BaseBottomSheet<VB: ViewDataBinding> : BottomSheetDialogFragment(
     val binding
         get() = mViewDataBinding!!
 
-    abstract fun setLayoutId(): Int
+    abstract fun getLayoutId(): Int
 
-    open fun setTheme(): Int = R.style.BottomSheetTheme
-
-    override fun getTheme(): Int {
-        return setTheme()
-    }
+    override fun getTheme(): Int = R.style.BottomSheetTheme
 
     open fun setLayoutHeight(): Int {
         return (binding.root.resources.displayMetrics.heightPixels * 0.5).toInt()
     }
-
 
     open fun parseArgument() {}
 
@@ -43,7 +38,7 @@ abstract class BaseBottomSheet<VB: ViewDataBinding> : BottomSheetDialogFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mViewDataBinding = DataBindingUtil.inflate(inflater, setLayoutId(), container, false)
+        mViewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         return binding.root
     }
 

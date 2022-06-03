@@ -1,14 +1,17 @@
 package ru.roadreport.android.data.domain.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import ru.roadreport.android.R
 
+@Parcelize
 data class ClaimModel(
     val id: Int? = null,
     val url: String? = null,
     val geoLocation: GeoLocation,
     val datetime: String,
     val receive_status: Int = 0
-){
+) : Parcelable {
     val status: ClaimStatus = ClaimStatus.fromInt(receive_status)
 }
 

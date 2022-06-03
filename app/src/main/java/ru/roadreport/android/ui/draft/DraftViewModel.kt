@@ -14,6 +14,8 @@ class DraftViewModel @Inject constructor(
 ) : ViewModel() {
     val draftList = draftRepository.getDrafts()
 
+    var draft: DraftModel? = null
+
     fun createDraft(draft: DraftModel) {
         viewModelScope.launch {
             draftRepository.createDraft(draft)

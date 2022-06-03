@@ -1,12 +1,15 @@
 package ru.roadreport.android.data.domain.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import ru.roadreport.android.data.local.models.DraftModelRoom
 
-data class DraftModel(
+@Parcelize
+data class DraftModel (
     val id: Int = 0,
     val title: String,
     val claim: ClaimModel,
-)
+) : Parcelable
 
 fun DraftModel.toRoom(): DraftModelRoom {
     return DraftModelRoom(

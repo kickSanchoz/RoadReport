@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.net.toUri
+import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.roadreport.android.R
 import ru.roadreport.android.data.domain.models.DraftModel
 import ru.roadreport.android.databinding.ItemDraftBinding
-import ru.roadreport.android.ui.draft.dialogs.IDraftBottomSheet
+import ru.roadreport.android.ui.draft.dialogs.DraftBottomSheet
 import java.io.File
 import java.io.FileNotFoundException
 
@@ -19,9 +20,7 @@ class DraftAdapter(private val fragmentManager: FragmentManager)
 
     private val draftsList = mutableListOf<DraftModel>()
 
-    private val draftBottomSheet by lazy {
-        IDraftBottomSheet.create()
-    }
+    private var draftBottomSheet: DraftBottomSheet? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DraftViewHolder {
         val view = ItemDraftBinding.inflate(
@@ -74,8 +73,13 @@ class DraftAdapter(private val fragmentManager: FragmentManager)
             }
 
             binding.root.setOnClickListener {
-                if (!draftBottomSheet.dialogVisible) {
-                    draftBottomSheet.show(draft, fragmentManager, null)
+                if (draftBottomSheet?.isVisible != true){
+                    draftBottomSheet = DraftBottomSheet().apply {
+                        arguments = bundleOf(
+                            DraftBottomSheet.TAG to draft
+                        )
+                    }
+                    draftBottomSheet?.show(fragmentManager, null)
                 }
             }
         }

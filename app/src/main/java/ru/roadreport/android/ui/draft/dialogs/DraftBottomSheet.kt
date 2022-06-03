@@ -3,7 +3,6 @@ package ru.roadreport.android.ui.draft.dialogs
 import android.util.Log
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.net.toUri
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import ru.roadreport.android.R
@@ -14,34 +13,23 @@ import ru.roadreport.android.ui.draft.DraftViewModel
 import java.io.File
 import java.io.FileNotFoundException
 
-interface IDraftBottomSheet {
-    fun show(draftModel: DraftModel, manager: FragmentManager, tag: String?)
-    val dialogVisible: Boolean
-
-    companion object {
-        fun create(): IDraftBottomSheet = DraftBottomSheet()
-    }
-}
-
 @AndroidEntryPoint
-class DraftBottomSheet : BaseBottomSheet<BottomSheetDraftBinding>(), IDraftBottomSheet {
+class DraftBottomSheet : BaseBottomSheet<BottomSheetDraftBinding>() {
     private val viewModel: DraftViewModel by activityViewModels()
 
     private var draft: DraftModel? = null
 
-    override fun setLayoutId(): Int = R.layout.bottom_sheet_draft
+    override fun getLayoutId(): Int = R.layout.bottom_sheet_draft
 
-    override fun show(draftModel: DraftModel, manager: FragmentManager, tag: String?) {
-        draft = draftModel
-        super.show(manager, tag)
+    override fun parseArgument() {
+        if (arguments != null){
+            viewModel.draft = arguments?.getParcelable(TAG)
+        }
     }
-
-    override val dialogVisible: Boolean
-        get() = super.isVisible()
 
     override fun setupViews() {
         binding.apply {
-            draft?.let {
+            viewModel.draft?.let {
                 tvTitle.text = it.title
                 tvDatetime.text = it.claim.datetime
                 tvLatitude.text = it.claim.geoLocation.latitude.toString()
@@ -68,10 +56,14 @@ class DraftBottomSheet : BaseBottomSheet<BottomSheetDraftBinding>(), IDraftBotto
     override fun observeViews() {
         binding.btnDelete.setOnClickListener {
             Log.e("draft", "$draft")
-            draft?.let {
+            viewModel.draft?.let {
                 viewModel.deleteDraftById(it.id)
             }
             dismiss()
         }
+    }
+
+    companion object {
+        const val TAG: String = "DraftBottomSheet"
     }
 }

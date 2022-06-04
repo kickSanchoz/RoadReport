@@ -41,6 +41,12 @@ android {
         dataBinding true
         viewBinding true
     }
+
+    buildscript {
+        repositories {
+            maven { url "https://www.jitpack.io" }
+        }
+    }
 }
 
 dependencies {
@@ -69,4 +75,8 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
     implementation("com.google.android.gms:play-services-location:19.0.1")
+
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+    implementation("io.coil-kt:coil:1.+")
+    implementation("io.coil-kt:coil-svg:1.+")
 }

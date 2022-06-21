@@ -20,7 +20,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
     private var mViewBinding: VB? = null
     val binding get() = mViewBinding!!
 
-    abstract fun setLayoutId(): Int
+    abstract fun getLayoutId(): Int
 
     open fun parseArguments() {}
 
@@ -37,7 +37,7 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        mViewBinding = DataBindingUtil.inflate(inflater, setLayoutId(), container, false)
+        mViewBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         return binding.root
     }
 

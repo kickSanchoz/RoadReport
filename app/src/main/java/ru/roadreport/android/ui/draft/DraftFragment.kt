@@ -18,7 +18,7 @@ class DraftFragment : BaseFragment<FragmentDraftBinding>(){
         DraftAdapter(childFragmentManager)
     }
 
-    override fun setLayoutId(): Int = R.layout.fragment_draft
+    override fun getLayoutId(): Int = R.layout.fragment_draft
 
     override fun setupViews() {
         setupAppBar(binding.appBar, getString(R.string.YourDrafts), R.drawable.ic_add)
@@ -28,7 +28,7 @@ class DraftFragment : BaseFragment<FragmentDraftBinding>(){
                 0,
                 "Созданный черновик",
                 ClaimModel(
-                    url = "/storage/emulated/0/Android/data/ru.roadreport/files/Pictures/rr_30052022_2016261275501681018714003.jpg",
+                    url = "/storage/emulated/0/Android/data/ru.roadreport/files/Pictures/rr_07062022_1725331889721507041962856.jpg",
                     geoLocation = GeoLocation(
                         latitude = -99.999999,
                         longitude = -00.000000,
@@ -46,7 +46,7 @@ class DraftFragment : BaseFragment<FragmentDraftBinding>(){
 
     override fun observeData() {
         viewModel.draftList.observe(viewLifecycleOwner){
-            draftAdapter.addAll(it)
+            draftAdapter.appendAll(it)
         }
     }
 

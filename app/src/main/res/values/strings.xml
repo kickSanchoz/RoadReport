@@ -19,7 +19,7 @@
     <string name="CreateClaim">Добавьте жалобу</string>
     <string name="TakePhoto">Сделать фото</string>
     <string name="SelectFromGallery">Выбрать из галереи</string>
-    <string name="AttachPhoto">Прикрепте фото</string>
+    <string name="AttachPhoto">Прикрепите фото</string>
     <string name="AttachPhotoRequired">Прикрепте фото<font color="#FF0000">*</font></string>
     <string name="AddTitleRequired">Добавьте название<font color="#FF0000">*</font></string>
     <string name="LocationPermissionRequiredDescription">Для загрузки фотографии необходимо предоставить доступ к местоположению</string>

@@ -7,7 +7,6 @@ import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import ru.roadreport.android.R
 import ru.roadreport.android.base.BaseBottomSheet
-import ru.roadreport.android.data.domain.models.DraftModel
 import ru.roadreport.android.databinding.BottomSheetDraftBinding
 import ru.roadreport.android.ui.draft.DraftViewModel
 import java.io.File
@@ -16,8 +15,6 @@ import java.io.FileNotFoundException
 @AndroidEntryPoint
 class DraftBottomSheet : BaseBottomSheet<BottomSheetDraftBinding>() {
     private val viewModel: DraftViewModel by activityViewModels()
-
-    private var draft: DraftModel? = null
 
     override fun getLayoutId(): Int = R.layout.bottom_sheet_draft
 
@@ -55,7 +52,7 @@ class DraftBottomSheet : BaseBottomSheet<BottomSheetDraftBinding>() {
 
     override fun observeViews() {
         binding.btnDelete.setOnClickListener {
-            Log.e("draft", "$draft")
+            Log.e("draft", "${viewModel.draft}")
             viewModel.draft?.let {
                 viewModel.deleteDraftById(it.id)
             }

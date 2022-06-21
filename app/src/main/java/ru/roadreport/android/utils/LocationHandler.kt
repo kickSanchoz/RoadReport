@@ -15,13 +15,11 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import ru.roadreport.android.R
 import ru.roadreport.android.data.domain.models.GeoLocation
 
-interface ILocation {
+interface ILocationHandler {
     fun locationListener(block: (GeoLocation?) -> Unit)
 }
 
@@ -29,7 +27,7 @@ interface ILocation {
 
 class LocationHandler(
     private var fragment: Fragment?
-): DefaultLifecycleObserver, ILocation, LocationListener {
+): DefaultLifecycleObserver, ILocationHandler, LocationListener {
 
     init {
         fragment?.lifecycle?.addObserver(this)
@@ -38,7 +36,6 @@ class LocationHandler(
     private lateinit var callback: (GeoLocation?) -> Unit
 
     private var alertDialog: AlertDialog? = null
-    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private var locationManager: LocationManager? = null
 
     private val locationPermissionRequest = fragment?.registerForActivityResult(
@@ -83,9 +80,6 @@ class LocationHandler(
     private fun getCurrentLocation() {
         fragment?.let { frgmnt ->
             frgmnt.context?.let { cntxt ->
-
-                fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(cntxt)
-
                 // Разрешения не получены
                 if (!checkPermissions()) {
                     locationPermissionRequest?.launch(
@@ -105,7 +99,7 @@ class LocationHandler(
                         )
                     }
                     else {
-                        // Повторная проверка необходима для методов fusedLocationProviderClient
+                        // Повторная проверка необходима для методов getLastKnownLocation
                         if (ActivityCompat.checkSelfPermission(cntxt,
                                 Manifest.permission.ACCESS_FINE_LOCATION)
                             == PackageManager.PERMISSION_GRANTED

@@ -43,13 +43,13 @@ class DraftAdapter(private val fragmentManager: FragmentManager)
         draftsList.clear()
     }
 
-    fun addAll(drafts: List<DraftModel>) {
+    fun appendAll(drafts: List<DraftModel>) {
         clear()
         draftsList.addAll(drafts)
         notifyDataSetChanged()
     }
 
-    inner class DraftViewHolder(val binding: ItemDraftBinding):
+    inner class DraftViewHolder(private val binding: ItemDraftBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun bind(draft: DraftModel) {
             binding.tvDraftTitle.text = draft.title

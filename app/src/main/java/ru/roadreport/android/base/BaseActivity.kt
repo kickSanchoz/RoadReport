@@ -7,9 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 
 
-abstract class BaseActivity<VB : ViewDataBinding>(
-    val bindingFactory: (LayoutInflater) -> VB
-) : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewDataBinding>(val bindingFactory: (LayoutInflater) -> VB)
+    : AppCompatActivity() {
 
     private var mViewBinding: VB? = null
     val binding get() = mViewBinding!!
@@ -18,20 +17,9 @@ abstract class BaseActivity<VB : ViewDataBinding>(
     open fun observeData() {}
 
     /**
-     * Нужен для переходов, в этот момент binding == null!!!!
+     * Нужен для переходов, в этот момент binding = null!!!!
      * */
-    open fun configureActivity() {
-
-    }
-
-//    private val inAppNotifyReceiver = object : BroadcastReceiver() {
-//        override fun onReceive(context: Context?, intent: Intent?) {
-//            val type = intent?.getSerializableExtra(PushService.TYPE_NOTIFICATION) as TypeSnackBar
-//            val title = intent?.getStringExtra(PushService.TITLE)!!
-//            val body = intent?.getStringExtra(PushService.BODY)!!
-//            noticeSnackBar(type, title, body)
-//        }
-//    }
+    open fun configureActivity() {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

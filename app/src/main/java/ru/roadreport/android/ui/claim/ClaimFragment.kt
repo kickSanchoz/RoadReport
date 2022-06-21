@@ -12,7 +12,7 @@ class ClaimFragment : BaseFragment<FragmentClaimBinding>() {
 
     private var claimBottomSheet: ClaimBottomSheet? = null
 
-    override fun setLayoutId(): Int = R.layout.fragment_claim
+    override fun getLayoutId(): Int = R.layout.fragment_claim
 
     override fun setupViews() {
         setupAppBar(binding.appBar, getString(R.string.YourClaims))

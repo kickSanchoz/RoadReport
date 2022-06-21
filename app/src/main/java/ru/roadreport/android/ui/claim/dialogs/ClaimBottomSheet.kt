@@ -11,37 +11,44 @@ import ru.roadreport.android.R
 import ru.roadreport.android.base.BaseBottomSheet
 import ru.roadreport.android.databinding.BottomSheetClaimBinding
 import ru.roadreport.android.ui.claim.dialogs.presentation.DraftFormEvent
-import ru.roadreport.android.utils.ILocation
-import ru.roadreport.android.utils.ISelectPicture
+import ru.roadreport.android.utils.ILocationHandler
+import ru.roadreport.android.utils.IPictureHandler
 import ru.roadreport.android.utils.LocationHandler
 import ru.roadreport.android.utils.PictureHandler
+import ru.roadreport.android.utils.gallery.GalleryDialogFragment
+import java.io.File
 
 @AndroidEntryPoint
 class ClaimBottomSheet : BaseBottomSheet<BottomSheetClaimBinding>() {
     private val viewModel: ClaimBottomSheetViewModel by viewModels()
 
-    private lateinit var pictureSelector: ISelectPicture
-    private lateinit var locationHandler: ILocation
+    private lateinit var pictureHandler: IPictureHandler
+    private lateinit var locationHandler: ILocationHandler
 
     override fun getLayoutId(): Int = R.layout.bottom_sheet_claim
 
-    override fun setLayoutHeight(): Int = LinearLayout.LayoutParams.MATCH_PARENT
+    override fun getLayoutHeight(): Int = LinearLayout.LayoutParams.MATCH_PARENT
 
     override fun setupActivityResults() {
-        pictureSelector = PictureHandler(this)
+        pictureHandler = PictureHandler(this)
         locationHandler = LocationHandler(this)
     }
 
     override fun observeViews() {
         binding.btnSend.setOnClickListener {
+//            viewModel.onEvent(DraftFormEvent.Submit)
             setDraftMode()
-//            viewModel.onEvent(DraftFormEvent.Create)
         }
         binding.lAttachPhoto.cwCardAppend.setOnClickListener {
             getLocation()
         }
         binding.ivPicture.setOnClickListener {
-            getLocation()
+//            getLocation()
+            val photos = listOf(
+                viewModel.file ?: File("/storage/emulated/0/Android/data/ru.roadreport/files/Pictures/rr_01062022_0117368024713007059008393.jpg"),
+                File("/storage/emulated/0/Android/data/ru.roadreport/files/Pictures/rr_03062022_221440360495174610414939.jpg")
+            )
+            GalleryDialogFragment(photos).show(childFragmentManager, null)
         }
 
         binding.etAddTitle.addTextChangedListener {
@@ -78,7 +85,7 @@ class ClaimBottomSheet : BaseBottomSheet<BottomSheetClaimBinding>() {
     }
 
     private fun getPicture() {
-        pictureSelector.showPicker { file ->
+        pictureHandler.showPicker { file ->
             viewModel.onEvent(DraftFormEvent.PhotoFileChanged(file))
             Log.e("absolute file path", "${file?.absoluteFile}")
             if (file == null) {
@@ -131,6 +138,19 @@ class ClaimBottomSheet : BaseBottomSheet<BottomSheetClaimBinding>() {
                 binding.tilAddTitle.isErrorEnabled = false
                 binding.tilAddTitle.error = null
             }
+        }
+
+
+        viewModel.geolocationResult.validationResult.observe(viewLifecycleOwner) { //TODO 1
+            Log.e("geolocationResult", "$it")
+        }
+
+        viewModel.titleResult.validationResult.observe(viewLifecycleOwner) { //TODO 2
+            Log.e("titleResult", "$it")
+        }
+
+        viewModel.draftUseCase.photoFileError.observe(viewLifecycleOwner) {
+
         }
     }
 }

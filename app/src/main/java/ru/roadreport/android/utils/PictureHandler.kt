@@ -4,6 +4,7 @@ import android.net.Uri
 import android.os.Environment
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -17,14 +18,14 @@ import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
-interface ISelectPicture {
+interface IPictureHandler {
     fun showPicker(block: (File?) -> Unit)
     fun deletePicture(file: File)
 }
 
 class PictureHandler (
     private var fragment: Fragment?
-): DefaultLifecycleObserver, ISelectPicture {
+): DefaultLifecycleObserver, IPictureHandler {
 
     init {
         fragment?.lifecycle?.addObserver(this)
@@ -72,7 +73,7 @@ class PictureHandler (
 
 
     //--------------------------------From Device--------------------------------
-    private var selectUri: Uri? = null
+    private var selectedUri: Uri? = null
     private val selectPictureLauncher =
         fragment?.registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             Log.e("selectUri", "$uri")
@@ -149,7 +150,7 @@ class PictureHandler (
             fragment?.context?.getString(R.string.TakePhoto),
             fragment?.context?.getString(R.string.SelectFromGallery)
         )
-    private var alertDialog: androidx.appcompat.app.AlertDialog? = null
+    private var alertDialog: AlertDialog? = null
 
     override fun showPicker(block: (File?) -> Unit) {
         callback = block
